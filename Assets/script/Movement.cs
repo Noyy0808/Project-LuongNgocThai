@@ -15,7 +15,7 @@ public class Movement : MonoBehaviour
     public Gamemodes CurrentGamemode;
 
     //                        0    1       2      3        4
-    float[] SpeedValues = { 12.6f, 10.4f, 12.96f, 15.6f, 19.27f, 0f };
+    float[] SpeedValues = { 12.6f, 14.4f, 16.96f, 20.6f, 25.27f, 0f };
     
 
 
@@ -52,10 +52,10 @@ public class Movement : MonoBehaviour
         return Physics2D.OverlapBox(GroundCheckTransform.position + Vector3.up - Vector3.up*(Gravity - 1 / - 2), Vector2.right * 1.1f + Vector2.up * GroundCheckRadius, 0, GroundMask);
     }
 
-    bool TouchingWall()
-    {
-        return Physics2D.OverlapBox((Vector2)transform.position + (Vector2.right * 0.55f), Vector2.up * 0.8f + (Vector2.right * GroundCheckRadius), 0, GroundMask);
-    }
+    //bool TouchingWall()
+    //{
+    //    return Physics2D.OverlapBox((Vector2)transform.position + (Vector2.right * 0.55f), Vector2.up * 0.8f + (Vector2.right * GroundCheckRadius), 0, GroundMask);
+    //}
 
     void Cube()
     {
@@ -77,6 +77,9 @@ public class Movement : MonoBehaviour
         {
             Sprite.Rotate(Vector3.back, 452f * Time.deltaTime * Gravity);
         }
+
+        GetComponent<TrailRenderer>().enabled = false;
+
     }
 
     void Ship()
@@ -92,12 +95,25 @@ public class Movement : MonoBehaviour
         }
 
         rb.gravityScale = rb.gravityScale * Gravity;
+
+        GetComponent<TrailRenderer>().enabled = true;
+
     }
 
     void Wave()
     {
         rb.gravityScale = 0;
         rb.velocity = new Vector2(0, SpeedValues[(int)CurrentSpeed] * (Input.GetMouseButton(0) ? 1 : -1) * Gravity);
+        // B?t Trail Renderer c?a player
+        GetComponent<TrailRenderer>().enabled = true;
+
+
+        //change sprite
+
+        //SpriteRenderer spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        //Sprite newSpriteImage = Resources.Load<Sprite>("Sprites/wave");
+        //spriteRenderer.sprite = newSpriteImage;
+   
     }
 
     //private void OnTriggerEnter2D(Collider2D other)

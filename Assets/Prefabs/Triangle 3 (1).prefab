@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5568628, g: 0.5568628, b: 0.5568628, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -127,4 +127,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 4846588793410072895, guid: 203646f7de9ccdc4ca1ef3836a84ffdf, type: 3}
-  respawnPoint: {fileID: 1515938574929029662, guid: e2bf891a5e0d8764c8456cc97aaacb6d, type: 3}
+  respawnPoint: {fileID: 0}
+  respawnDelay: 2
